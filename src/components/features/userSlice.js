@@ -5,7 +5,7 @@ export const userSlice=createSlice({
     initialState:{
         user:null,
         allUser:null,
-        user2user:null
+        userToUser:null
     },
     reducers:{
         login:(state,action)=>{
@@ -14,20 +14,21 @@ export const userSlice=createSlice({
         logout:(state)=>{
             state.user=null
             state.allUser=null
+            state.userToUser=null
         },
         allUser:(state,action)=>{
             state.allUser=action.payload
         },
-        user2user:(state,action)=>{
-            state.user2user=action.payload
+        userToUser:(state,action)=>{
+            state.userToUser=action.payload
         }
     }
 })
 
-export const {login,logout,allUser}=userSlice.actions;
+export const {login,logout,allUser,userToUser}=userSlice.actions;
 export const selectUser=(state)=>state.user.user;
 export const selectAllUser=(state)=>state.user.allUser;
-export const selectUser2User=(state)=>state.user.user2user;
+export const selectuserToUser=(state)=>state.user.userToUser;
 
 
 export default userSlice.reducer;

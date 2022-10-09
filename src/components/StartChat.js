@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from "react-bootstrap"
 import {Link} from 'react-router-dom'
-import { user2user, selectAllUser, selectUser } from './features/userSlice'
+import {  selectAllUser, selectUser, userToUser } from './features/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import Nav from './Nav'
 
@@ -11,9 +11,10 @@ const StartChat = () => {
   const dispatch=useDispatch()
   const filteredUser=allUsers.filter((item)=> (item.username!==user.username))
   const handleClick=(e)=>{
-   console.log(e.target.id)
-   dispatch(user2user({
-    user1:(e.target.value)
+   let user1=(e.target.id)
+   dispatch(userToUser({
+    user1:(user1),
+    user2:(user._id)
    }))
   }
 

@@ -17,9 +17,8 @@ const Chat = () => {
         console.log(data)
         setMessages(messages=>[...messages,<li key={Date.now()}>{data}</li>])
     })
-   
     },[])
-    // console.log(socket)
+
 
     const handleSubmit=(e)=>{
         e.preventDefault();
