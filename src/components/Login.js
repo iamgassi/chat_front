@@ -5,17 +5,20 @@ import Spinner from 'react-bootstrap/Spinner';
 import style from './Style.module.css'
 import StartChat from './StartChat';
 
+import { allUser, login, selectUser } from './features/userSlice';
+import {useDispatch, useSelector} from 'react-redux'
+
+
 const Login = () => {
 
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
-    const [loggedIn,setLoggedIn]=useState(false)
-
     const [fetchData,setFetchData]=useState({});
     const[err,SetErr]=useState("");
     const[isLoading,setIsloading]=useState(false)
 
-    const [loggedBy,setLoggedBy]=useState('')
+
+    const dispatch=useDispatch();
 
     useEffect(function(){
       fetch("http://localhost:8000/user")
@@ -26,6 +29,9 @@ const Login = () => {
          .then(function(data){
            console.log(data);
            setFetchData(data);
+           dispatch(
+            allUser(data)
+            ) 
         })
          .catch(function(err){
         
@@ -54,19 +60,20 @@ const Login = () => {
        setPassword("")
       } 
 
+       
+  
     function verifyFromServer()
     {       
         for(let i=0;i<fetchData.length;i++)
        {
-       let serverUsernmae=fetchData[i].username
-        console.log(serverUsernmae)
-        if(username===serverUsernmae  )
+       let serverUsername=fetchData[i].username
+        console.log(serverUsername)
+        if(username===serverUsername  )
               {
                 if(fetchData[i].password===password)
                       {
                         console.log("success")
-                        setLoggedIn(true)
-                        setLoggedBy(fetchData[i])
+                        dispatch(login(fetchData[i]))  
                       }
                 else
                     {
@@ -83,10 +90,11 @@ const Login = () => {
        SetErr("Something Wrong!")
      
     }
+   const user=useSelector(selectUser)
 
   return (
     <div >
-      {!loggedIn?(<div className={style.main}>
+      {!user?(<div className={style.main}>
       <Form onSubmit={(e)=>handleSubmit(e)}>
       <h1>Login here </h1>
 
@@ -128,7 +136,7 @@ const Login = () => {
 
       </Form>
   </div>):
-  (<StartChat data={fetchData} user={loggedBy}/>)}
+  (<StartChat/>)}
       
     </div>
   

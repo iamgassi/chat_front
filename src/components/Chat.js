@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap"
 import {Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import './default.css'
+import Nav from './Nav'
 
 let socket;
 const Chat = () => {
@@ -12,10 +13,9 @@ const Chat = () => {
 
     useEffect(()=>{
         socket=io('http://localhost:8000');
-    //    console.log(socket)
     socket.on('message',(data)=>{
         console.log(data)
-        setMessages(messages=>[...messages,<li>{data}</li>])
+        setMessages(messages=>[...messages,<li key={Date.now()}>{data}</li>])
     })
    
     },[])
@@ -32,13 +32,13 @@ const Chat = () => {
 
   return (
     <>
-     {/* <Link to="/StartChat"> */}
+    <Nav data={ <Link to="/StartChat">
          <Button
-         variant="danger mb-2" 
-         size='sm'>
+         variant="success" 
+         >
          Back To Chat
          </Button>
-          {/* </Link> */}
+          </Link>}/>
 
      <h2> Welcome , to chat portal! </h2>
 
