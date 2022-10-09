@@ -1,0 +1,27 @@
+.main {
+    line-height: 3rem;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Cormorant SC', serif;
+  }
+
+  .error {
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #d51d1d;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: capitalize;
+  }
+  
+
+  
+  
+ 
+ 
