@@ -117,11 +117,11 @@ const Login = () => {
       required={true}
       />
      <div className="d-grid gap-2">
-     <Button variant="primary mb-3" type='submit'>Submit</Button>
+     <Button variant="primary mb-3" type='submit'>Login</Button>
       </div>
-     <Link to="/">
+     <Link to="/register">
      <div className="d-grid gap-2">
-     <Button variant="dark">Home</Button>
+     <Button variant="dark">Register</Button>
       </div>
      </Link>
 

@@ -20,7 +20,7 @@ const Nav = ({data}) => {
         <Navbar.Brand> Hello ,{user.username} </Navbar.Brand>  
             <div>
           {data}
-          <Link to="/login">
+          <Link to="/">
          <Button variant="danger  ms-2" onClick={(e)=>handleLogout(e)}>Logout</Button>
          </Link>
             </div>

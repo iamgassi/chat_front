@@ -92,13 +92,13 @@ const handleSubmit=async function(e){
         
        <div className="d-grid gap-2">
        <Button variant="primary mb-3"
-        type='submit'>Submit
+        type='submit'>Register
           </Button>
        </div>
      
      <Link to="/">
      <div className="d-grid gap-2">
-     <Button variant="dark">Home</Button>
+     <Button variant="dark">Login</Button>
       </div>
      </Link>
 
